@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop Surveillance Pricing — AB 2564</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #08111a;
+  --ink2:   #0c1c2a;
+  --g:      #0dff7a;
+  --g2:     #09a84f;
+  --gold:   #f0b429;
+  --red:    #e03c31;
+  --w:      #e8edf2;
+  --w2:     #8fa3b1;
+  --rule:   #162535;
+  --card:   #0f1e2d;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+/* grain overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.6;mix-blend-mode:overlay;
+}
+
+body{
+  background:var(--ink);
+  color:var(--w);
+  font-family:'Geist Mono',monospace;
+  font-size:15px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--ink);}
+::-webkit-scrollbar-thumb{background:var(--g2);}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 3rem;height:52px;
+  border-bottom:1px solid var(--rule);
+  background:rgba(8,17,26,.9);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.25rem;letter-spacing:.08em;
+  color:var(--g);text-decoration:none;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--w2);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--g);}
+.nav-pill{
+  border:1px solid var(--g);color:var(--g);
+  padding:.3rem .9rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;transition:all .2s;
+}
+.nav-pill:hover{background:var(--g);color:var(--ink);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:52px 3rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%,rgba(13,255,122,.06) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 80% at 0% 100%,rgba(9,168,79,.04) 0%,transparent 60%),
+    var(--ink);
+}
+/* large rotated text behind */
+.hero-bg-text{
+  position:absolute;right:-2rem;top:50%;transform:translateY(-50%) rotate(90deg);
+  font-family:'Bebas Neue',sans-serif;font-size:22vw;
+  color:rgba(13,255,122,.03);letter-spacing:.05em;white-space:nowrap;
+  user-select:none;pointer-events:none;
+}
+.hero-inner{position:relative;max-width:1100px;width:100%;}
+.hero-kicker{
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--g);margin-bottom:2rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.hero-kicker::before{content:'';display:block;width:40px;height:1px;background:var(--g);}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,13vw,11rem);
+  line-height:.92;letter-spacing:.02em;
+  margin-bottom:2.5rem;
+}
+.hero h1 .h1-plain{
+  display:block;color:var(--w);
+}
+.hero h1 .h1-bubble{
+  display:inline-block;
+  background:none;
+  color:var(--red);
+  padding:0;
+  border-radius:0;
+  line-height:.92;
+}
+.hero h1 .h1-white{
+  display:block;
+  color:var(--w);
+  -webkit-text-stroke:0;
+}
+.hero-body{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:end;padding-top:2rem;border-top:1px solid var(--rule);
+}
+.hero-desc{color:var(--w2);font-size:.9rem;line-height:1.75;max-width:480px;}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.stat{border-left:2px solid var(--rule);padding-left:1rem;}
+.stat:first-child{border-color:var(--g);}
+.stat-n{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;color:var(--gold);line-height:1;
+}
+.stat-l{font-size:.75rem;color:var(--w2);line-height:1.4;margin-top:.2rem;}
+.stat-s{font-size:.65rem;color:var(--rule);margin-top:.15rem;letter-spacing:.05em;}
+.hero-ctas{display:flex;gap:1rem;margin-top:2rem;}
+.btn{
+  display:inline-block;text-decoration:none;
+  padding:.6rem 1.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .2s;font-family:'Geist Mono',monospace;
+}
+.btn-g{background:var(--g);color:var(--ink);font-weight:600;}
+.btn-g:hover{background:#fff;transform:translateY(-2px);}
+.btn-o{border:1px solid var(--rule);color:var(--w2);}
+.btn-o:hover{border-color:var(--w2);color:var(--w);}
+
+/* ── SECTION BASE ── */
+section{padding:8rem 3rem;}
+.container{max-width:1100px;margin:0 auto;}
+.section-tag{
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--g);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.section-tag::before{content:'▸';}
+.section-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  line-height:1.1;margin-bottom:1rem;
+}
+.section-title em{color:var(--g);font-style:italic;}
+.section-sub{color:var(--w2);font-size:.9rem;line-height:1.75;max-width:560px;margin-bottom:3.5rem;}
+
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.5rem 0;background:var(--ink2);}
+.ticker{display:flex;gap:4rem;animation:tick 30s linear infinite;white-space:nowrap;}
+.ticker-item{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);}
+.ticker-item span{color:var(--g);margin-right:.5rem;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── WHAT IS IT ── */
+#what{background:var(--ink2);}
+.what-layout{display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start;}
+.def-block{
+  font-family:'Instrument Serif',serif;font-size:1.4rem;line-height:1.55;
+  border-left:3px solid var(--g);padding-left:1.5rem;margin-bottom:2.5rem;
+  color:var(--w);
+}
+.data-table{width:100%;border-collapse:collapse;margin-top:2rem;}
+.data-table td{padding:.7rem .9rem;font-size:.82rem;border-bottom:1px solid var(--rule);}
+.data-table td:first-child{color:var(--g);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;width:38%;}
+.data-table td:last-child{color:var(--w2);}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);margin-top:2rem;}
+.compare-side{padding:1.5rem;}
+.compare-side+.compare-side{border-left:1px solid var(--rule);}
+.compare-head{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;}
+.compare-side.ok .compare-head{color:var(--w2);}
+.compare-side.bad .compare-head{color:var(--red);}
+.citem{font-size:.82rem;padding:.45rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.5rem;align-items:flex-start;}
+.citem:last-child{border:none;}
+.ci-ok{color:var(--g);flex-shrink:0;}
+.ci-bad{color:var(--red);flex-shrink:0;}
+
+/* case cards */
+.cases{display:flex;flex-direction:column;gap:1px;background:var(--rule);}
+.case{
+  background:var(--card);padding:1.5rem 1.75rem;
+  transition:background .2s;cursor:default;
+}
+.case:hover{background:#122030;}
+.case-co{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;}
+.case-stat{color:var(--gold);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin:.3rem 0 .6rem;}
+.case-body{color:var(--w2);font-size:.85rem;line-height:1.65;max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.case:hover .case-body{max-height:6rem;}
+
+/* ── TIMELINE ── */
+#timeline{background:var(--ink);position:relative;}
+
+.tl-wrapper{
+  position:relative;
+  padding-left:3rem;
+  max-width:780px;margin:0 auto;
+}
+
+/* the vertical line */
+.tl-line{
+  position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--rule);
+}
+.tl-line-fill{
+  position:sticky;top:52px;
+  width:2px;height:0;
+  background:linear-gradient(to bottom,var(--g),var(--g2));
+  box-shadow:0 0 12px var(--g);
+  transition:height .1s linear;
+}
+
+/* each timeline event */
+.tl-event{
+  position:relative;
+  padding:0 0 5rem 2.5rem;
+  opacity:.35;
+  transition:opacity .4s;
+}
+.tl-event.active{opacity:1;}
+
+/* dot on the line */
+.tl-dot{
+  position:absolute;left:-2.95rem;top:.35rem;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--rule);
+  transition:all .35s;
+}
+.tl-event.active .tl-dot{
+  background:var(--g);border-color:var(--g);
+  box-shadow:0 0 0 4px rgba(13,255,122,.15),0 0 16px var(--g);
+}
+
+/* date label */
+.tl-date{
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--g2);margin-bottom:.4rem;
+}
+.tl-event.active .tl-date{color:var(--g);}
+
+.tl-title{
+  font-family:'Instrument Serif',serif;
+  font-size:1.65rem;line-height:1.1;margin-bottom:.6rem;
+  color:var(--w);
+}
+
+/* the expanding body */
+.tl-body{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .55s cubic-bezier(.4,0,.2,1), opacity .4s ease .1s;
+  color:var(--w2);font-size:.88rem;line-height:1.75;
+}
+.tl-event.active .tl-body{
+  max-height:500px;
+  opacity:1;
+}
+.tl-tag{
+  display:inline-block;margin-top:1rem;
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--g);border:1px solid var(--g2);padding:.2rem .6rem;
+}
+
+/* ── TECHEQUITY SECTION ── */
+#techequity{background:var(--ink2);}
+.te-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.te-quote{
+  font-family:'Instrument Serif',serif;font-size:1.5rem;line-height:1.45;
+  font-style:italic;color:var(--w);margin-bottom:1rem;
+  position:relative;padding-left:2rem;
+}
+.te-quote::before{
+  content:'\201C';
+  position:absolute;left:0;top:-.2rem;
+  font-size:4rem;line-height:1;color:var(--g);font-style:normal;
+  font-family:'Instrument Serif',serif;
+}
+.te-attr{font-size:.75rem;color:var(--g);letter-spacing:.08em;text-transform:uppercase;}
+.people{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem;}
+.person{display:grid;grid-template-columns:60px 1fr;gap:1.25rem;align-items:start;}
+.person-img{
+  width:60px;height:60px;border-radius:4px;object-fit:cover;
+  border:1px solid var(--rule);background:var(--card);
+  display:block;
+}
+.person-name{font-size:.9rem;font-weight:500;letter-spacing:.03em;}
+.person-role{font-size:.72rem;color:var(--g);letter-spacing:.06em;text-transform:uppercase;margin:.1rem 0 .35rem;}
+.person-bio{font-size:.82rem;color:var(--w2);line-height:1.6;}
+
+.te-facts{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);}
+.te-fact{padding:1.2rem 1.4rem;border-bottom:1px solid var(--rule);}
+.te-fact:last-child{border:none;}
+.te-fact strong{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.3rem;}
+.te-fact p{font-size:.85rem;color:var(--w2);line-height:1.6;}
+
+/* ── WHY ONE-PAGER ── */
+#why{background:var(--ink);}
+.why-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
+.why-card{background:var(--card);padding:1.5rem;}
+.why-card h4{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--g);margin-bottom:.6rem;
+}
+.why-card p{font-size:.85rem;color:var(--w2);line-height:1.65;}
+.why-left p{font-size:.92rem;color:var(--w2);line-height:1.75;margin-bottom:1.5rem;}
+
+/* ── AB 2564 ── */
+#ab{background:var(--ink2);}
+.ab-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.provision-list{display:flex;flex-direction:column;gap:0;}
+.provision{padding:1.4rem 0;border-bottom:1px solid var(--rule);}
+.provision:last-child{border:none;}
+.provision h4{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--g);margin-bottom:.4rem;
+}
+.provision p{font-size:.85rem;color:var(--w2);line-height:1.65;}
+.push-list{display:flex;flex-direction:column;gap:0;}
+.push-row{
+  display:grid;grid-template-columns:1fr 24px 1fr;
+  gap:.8rem;align-items:center;
+  padding:1.25rem 0;border-bottom:1px solid var(--rule);
+}
+.push-row:last-child{border:none;}
+.push-q{font-size:.82rem;font-style:italic;color:var(--w2);}
+.push-arr{color:var(--g);font-size:.9rem;text-align:center;}
+.push-a{font-size:.82rem;color:var(--w);}
+
+/* ── WHO WE ARE ── */
+#who{background:var(--ink);}
+.who-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.team-cards{display:flex;flex-direction:column;gap:1.5rem;}
+.team-card{
+  display:grid;grid-template-columns:52px 1fr;gap:1rem;
+  align-items:start;padding:1.25rem;
+  border:1px solid var(--rule);
+  transition:border-color .2s;
+}
+.team-card:hover{border-color:var(--g2);}
+.team-avatar{
+  width:52px;height:52px;background:var(--card);
+  font-size:1.4rem;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--rule);
+}
+.team-name{font-size:.9rem;font-weight:500;}
+.team-role{font-size:.7rem;color:var(--g);letter-spacing:.08em;text-transform:uppercase;margin:.1rem 0 .3rem;}
+.team-bio{font-size:.82rem;color:var(--w2);line-height:1.6;}
+
+/* ── CTA ── */
+#cta{
+  padding:10rem 3rem;text-align:center;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(13,255,122,.06),transparent 70%),var(--ink);
+  border-top:1px solid var(--rule);
+}
+#cta h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,10vw,8rem);
+  letter-spacing:.03em;line-height:.9;margin-bottom:2rem;
+  color:var(--w);
+}
+#cta h2 em{color:var(--g);font-style:normal;}
+#cta p{color:var(--w2);max-width:500px;margin:0 auto 3rem;font-size:.9rem;line-height:1.75;}
+.cta-steps{display:flex;flex-direction:column;gap:.8rem;max-width:540px;margin:3rem auto 0;text-align:left;}
+.cta-step{
+  display:grid;grid-template-columns:2rem 1fr;gap:1rem;
+  align-items:start;padding:1rem;border:1px solid var(--rule);
+  transition:border-color .2s;
+}
+.cta-step:hover{border-color:var(--g2);}
+.cta-n{color:var(--g);font-size:.8rem;letter-spacing:.08em;}
+.cta-step p{font-size:.85rem;color:var(--w2);line-height:1.55;}
+.cta-step strong{color:var(--w);}
+
+/* ── FOOTER ── */
+footer{
+  padding:1.5rem 3rem;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.7rem;color:var(--w2);flex-wrap:wrap;gap:.5rem;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+footer a{color:var(--w2);text-decoration:none;transition:color .2s;}
+footer a:hover{color:var(--g);}
+
+/* ── SCROLL REVEALS ── */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* stagger children */
+.stagger > *{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.stagger.in > *:nth-child(1){opacity:1;transform:none;transition-delay:.05s;}
+.stagger.in > *:nth-child(2){opacity:1;transform:none;transition-delay:.12s;}
+.stagger.in > *:nth-child(3){opacity:1;transform:none;transition-delay:.19s;}
+.stagger.in > *:nth-child(4){opacity:1;transform:none;transition-delay:.26s;}
+.stagger.in > *:nth-child(5){opacity:1;transform:none;transition-delay:.33s;}
+.stagger.in > *:nth-child(6){opacity:1;transform:none;transition-delay:.40s;}
+
+@media(max-width:760px){
+  nav{padding:0 1.25rem;}
+  .nav-links{display:none;}
+  section{padding:5rem 1.25rem;}
+  .hero{padding:52px 1.25rem 4rem;}
+  .hero h1{font-size:clamp(3.5rem,15vw,8rem);}
+  .hero-body,.what-layout,.te-layout,.why-layout,.ab-layout,.who-layout{grid-template-columns:1fr;gap:2.5rem;}
+  .tl-wrapper{padding-left:2rem;}
+  .push-row{grid-template-columns:1fr;gap:.25rem;}
+  .push-arr{display:none;}
+  footer{flex-direction:column;text-align:center;}
+}
+
+/* ── ROTATOR ── */
+#rotator{
+  display:inline-block;
+  transition:opacity .25s ease, transform .35s cubic-bezier(.22,1,.36,1);
+  will-change:opacity,transform;
+}
+.rot-exit{
+  opacity:0 !important;
+  transform:translateY(-28px) !important;
+  transition:opacity .2s ease, transform .22s ease !important;
+  pointer-events:none;
+}
+.rot-enter{
+  opacity:0;
+  transform:translateY(28px);
+  transition:none !important;
+}
+.rot-settle{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+  transition:opacity .38s cubic-bezier(.22,1,.36,1),
+             transform .45s cubic-bezier(.22,1,.36,1) !important;
+}
+
+
+
+/* ── SINGLE-COLUMN TIMELINE ── */
+.tl-single{
+  max-width:680px;margin:0 auto;
+  position:relative;padding-left:2.5rem;
+}
+#tl-vline{
+  position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--g),var(--g2) 70%,var(--rule));
+  opacity:.25;
+}
+.tl-ev{
+  position:relative;margin-bottom:0;
+}
+.tl-ev-head{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:2.5rem 0 0;cursor:default;
+}
+.tl-ev-dot{
+  position:absolute;left:-2.75rem;top:2.85rem;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--rule);
+  transition:all .3s ease;flex-shrink:0;
+}
+.tl-ev.ev-active .tl-ev-dot{
+  background:var(--g);border-color:var(--g);
+  box-shadow:0 0 0 4px rgba(13,255,122,.12),0 0 14px var(--g);
+}
+.tl-ev-date{
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--w2);margin-bottom:.3rem;
+  transition:color .3s;
+}
+.tl-ev.ev-active .tl-ev-date{color:var(--g);}
+.tl-ev-title{
+  font-family:'Instrument Serif',serif;font-size:1.5rem;line-height:1.1;
+  color:var(--w);opacity:.4;
+  transition:opacity .35s ease;
+}
+.tl-ev.ev-active .tl-ev-title{opacity:1;}
+
+/* expanding body */
+.tl-ev-body{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .65s cubic-bezier(.4,0,.2,1),
+             opacity .45s ease .1s;
+  padding-left:.15rem;
+}
+.tl-ev-body p{
+  color:var(--w2);font-size:.88rem;line-height:1.75;
+  margin-top:.6rem;
+}
+
+/* inline panels that expand inside the body */
+.inline-panel{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .7s cubic-bezier(.4,0,.2,1),
+             opacity .5s ease .15s;
+  margin-top:1.5rem;
+  padding-top:1.5rem;
+  border-top:1px solid var(--rule);
+}
+.inline-panel.panel-open{
+  max-height:5000px;
+  opacity:1;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<a href="#cta" class="nav-pill">Act Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-text">PRICING</div>
+  <div class="hero-inner">
+    <h1>
+      <span class="h1-plain">They're using</span>
+      <span class="h1-bubble" id="rotator" aria-live="polite">Your Data</span>
+      <span class="h1-white">Against&nbsp;You.</span>
+    </h1>
+    <div class="hero-body">
+      <div>
+        <p class="hero-desc">AI is charging you more than your neighbor for the same product — based on your location, browsing history, and inferred income. No disclosure. No recourse. California's AB 2564 would end it.</p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-g">Take Action</a>
+          <a href="#timeline" class="btn btn-o">Scroll to Learn More</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n">23%</div>
+          <div class="stat-l">drop in consumer surplus</div>
+          <div class="stat-s">NBER 2017</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">86%</div>
+          <div class="stat-l">rise in corporate profits</div>
+          <div class="stat-s">NBER 2017</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">250+</div>
+          <div class="stat-l">retailers using these tools</div>
+          <div class="stat-s">FTC 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <span class="ticker-item"><span>▸</span>INSTACART CHARGED FAMILIES 23% MORE FOR IDENTICAL ITEMS</span>
+    <span class="ticker-item"><span>▸</span>AMAZON CHARGED SCHOOL DISTRICTS 2–3× THE GOING RATE</span>
+    <span class="ticker-item"><span>▸</span>TARGET PAID $5M TO SETTLE CALIFORNIA LOCATION-BASED PRICING SUIT</span>
+    <span class="ticker-item"><span>▸</span>250+ RETAILERS NOW USING AI PRICING TOOLS — FTC 2025</span>
+    <span class="ticker-item"><span>▸</span>AB 2564 CO-SPONSORED BY TECHEQUITY ACTION AND CONSUMER REPORTS</span>
+    <span class="ticker-item"><span>▸</span>INSTACART CHARGED FAMILIES 23% MORE FOR IDENTICAL ITEMS</span>
+    <span class="ticker-item"><span>▸</span>AMAZON CHARGED SCHOOL DISTRICTS 2–3× THE GOING RATE</span>
+    <span class="ticker-item"><span>▸</span>TARGET PAID $5M TO SETTLE CALIFORNIA LOCATION-BASED PRICING SUIT</span>
+    <span class="ticker-item"><span>▸</span>250+ RETAILERS NOW USING AI PRICING TOOLS — FTC 2025</span>
+    <span class="ticker-item"><span>▸</span>AB 2564 CO-SPONSORED BY TECHEQUITY ACTION AND CONSUMER REPORTS</span>
+  </div>
+</div>
+
+<!-- WHO WE ARE (top) -->
+<section id="who" style="padding:5rem 3rem 3rem;border-bottom:1px solid var(--rule);">
+  <div style="max-width:780px;margin:0 auto;text-align:center;">
+    <p class="section-tag" style="justify-content:center;">Who We Are</p>
+    <div style="display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+      <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div style="color:var(--w);font-size:.95rem;font-weight:500;">Love Adu</div>
+      </div>
+      <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div style="color:var(--w);font-size:.95rem;font-weight:500;">Ethan Ngo</div>
+      </div>
+      <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div style="color:var(--w);font-size:.95rem;font-weight:500;">David McGrane</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE — single column, panels expand inline -->
+<section id="timeline" style="padding:5rem 3rem 8rem;">
+  <div class="tl-single" id="tlSingle">
+
+    <!-- EVENT 0: Assignment Lands -->
+    <div class="tl-ev" data-ev="0">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot0"></div>
+        <div>
+          <div class="tl-ev-date">Week 1 — First Day of Class</div>
+          <div class="tl-ev-title">The Assignment Lands</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body0">
+        <p>We're handed the brief: partner with a real advocacy organization, produce something that would actually be used. No dry research papers.</p>
+        <p>Most of us had never heard of surveillance pricing. By the end of that first week, we couldn't stop noticing it everywhere.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Fall Semester Begins</div>
+
+        <!-- PANEL: What is Surveillance Pricing -->
+        <div class="inline-panel" id="panel-what">
+          <p class="section-tag" style="margin-bottom:.75rem;">The Problem</p>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">What is <em style="color:var(--red);">surveillance pricing?</em></h3>
+          <div class="def-block" style="font-size:1rem;margin-bottom:1rem;">AI that charges each customer a different price for the same product — based on your personal data, not market conditions.</div>
+          <p style="color:var(--w2);font-size:.85rem;line-height:1.75;margin-bottom:1.25rem;">Companies tag shoppers — <em>"impulsive buyer," "recently divorced," "first-time car buyer"</em> — and let algorithms set prices millions of times per day with no disclosure.</p>
+          <table class="data-table" style="margin-bottom:1.25rem;">
+            <tr><td>Location</td><td>How close you are to the store</td></tr>
+            <tr><td>Browsing History</td><td>What you've been researching online</td></tr>
+            <tr><td>Device Type</td><td>iPhone vs. cheap Android = different price</td></tr>
+            <tr><td>Inferred Income</td><td>Estimated from neighborhood data</td></tr>
+            <tr><td>Behavior Tags</td><td>"Impulsive buyer," "recently divorced"</td></tr>
+            <tr><td>Purchase History</td><td>What you've paid before &amp; your patterns</td></tr>
+          </table>
+          <div class="compare">
+            <div class="compare-side ok">
+              <div class="compare-head">Normal Dynamic Pricing</div>
+              <div class="citem"><span class="ci-ok">✓</span>Adjusts for supply &amp; demand</div>
+              <div class="citem"><span class="ci-ok">✓</span>Responds to market conditions</div>
+              <div class="citem"><span class="ci-ok">✓</span>Same price for all shoppers</div>
+              <div class="citem"><span class="ci-ok">✓</span>Price changes are visible</div>
+            </div>
+            <div class="compare-side bad">
+              <div class="compare-head">Surveillance Pricing</div>
+              <div class="citem"><span class="ci-bad">✗</span>Uses your location, device, browsing history</div>
+              <div class="citem"><span class="ci-bad">✗</span>Responds to your personal data</div>
+              <div class="citem"><span class="ci-bad">✗</span>Different price for every shopper</div>
+              <div class="citem"><span class="ci-bad">✗</span>Invisible to the consumer</div>
+            </div>
+          </div>
+          <div class="cases" style="margin-top:1.25rem;">
+            <div class="case"><div class="case-co">🛒 Instacart</div><div class="case-stat">Up to $1,200 extra per family of 4 annually</div><div class="case-body">Consumer Reports 2025: Eversight algorithm charged up to 23% more for identical items. 74% of items tested had multiple price points at the same store, same time.</div></div>
+            <div class="case"><div class="case-co">📦 Amazon</div><div class="case-stat">School districts charged 2–3× more per student</div><div class="case-body">Same-day, same-product price discrimination. One district could have saved $1M but received the Surveillance Price instead.</div></div>
+            <div class="case"><div class="case-co">🎯 Target</div><div class="case-stat">$5 million settlement in California</div><div class="case-body">Charged higher prices to California app users based on proximity — same product, different price.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENT 1: Meeting Vinhcent -->
+    <div class="tl-ev" data-ev="1">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot1"></div>
+        <div>
+          <div class="tl-ev-date">Week 3 — First Meeting</div>
+          <div class="tl-ev-title">Meeting Vinhcent &amp; TechEquity</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body1">
+        <p>We meet Vinhcent Le — VP of AI Policy at TechEquity and former board member of the California Privacy Protection Agency. He lays out the landscape: 250+ retailers using these tools, multi-million dollar settlements already on the books, and a new bill — AB 2564 — working its way through the legislature.</p>
+        <p style="margin-top:.5rem;">"What we need is something a staffer can read in two minutes during a busy hearing week."</p>
+        <div class="tl-tag" style="margin-top:.75rem;">TechEquity Collaborative, Oakland</div>
+
+        <!-- PANEL: TechEquity + AB 2564 -->
+        <div class="inline-panel" id="panel-te">
+          <p class="section-tag" style="margin-bottom:.75rem;">Our Partner</p>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">About <em>TechEquity.</em></h3>
+          <div class="te-quote" style="font-size:1rem;margin-bottom:.5rem;">"Surveillance isn't just creepy — it's expensive. We cannot allow technology to become a weapon against the economic wellbeing of everyday Californians."</div>
+          <div class="te-attr" style="margin-bottom:1.25rem;">— Vinhcent Le, VP of AI Policy, TechEquity</div>
+          <p style="font-size:.85rem;color:var(--w2);line-height:1.75;margin-bottom:1.25rem;">TechEquity Action is the advocacy arm of the TechEquity Collaborative — a California-based organization working at the intersection of technology, housing, labor, and consumer rights. Co-sponsor of AB 2564 alongside Consumer Reports.</p>
+          <div class="person" style="margin-bottom:1.25rem;">
+            <div class="person-img" style="display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:var(--card);border:1px solid var(--rule);border-radius:4px;color:var(--g);">VL</div>
+            <div>
+              <div class="person-name">Vinhcent Le</div>
+              <div class="person-role">VP of AI Policy, TechEquity</div>
+              <div class="person-bio">Former Senior Legal Counsel at the Greenlining Institute and board member of the California Privacy Protection Agency. Leads TechEquity's AI policy strategy including AB 2564.</div>
+            </div>
+          </div>
+          <div class="te-facts" style="margin-bottom:1.5rem;">
+            <div class="te-fact"><strong>Founded</strong><p>2016 in Oakland, California. Backed by Chan Zuckerberg Initiative, MacArthur Foundation, Ford Foundation.</p></div>
+            <div class="te-fact"><strong>Mission</strong><p>Ensure the tech industry is a force for justice — working at the intersection of technology, housing, labor, and consumer rights.</p></div>
+            <div class="te-fact"><strong>On AB 2564</strong><p>Co-sponsor alongside Consumer Reports. Submitted formal testimony to the California Assembly Privacy Committee.</p></div>
+          </div>
+
+          <h3 style="font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:.75rem;"><em>AB 2564</em> — what it does.</h3>
+          <p style="font-size:.85rem;color:var(--w2);margin-bottom:1rem;line-height:1.7;">AB 2564 does not ban dynamic pricing or discounts. It bans the <span style="color:var(--red);">covert use of personal profiling data</span> to extract maximum prices without consumers' knowledge.</p>
+          <div class="provision-list" style="margin-bottom:1.25rem;">
+            <div class="provision"><h4>Bans Willingness-to-Pay Pricing</h4><p>Prohibits using personal behavioral and financial data to set individualized prices for identical goods.</p></div>
+            <div class="provision"><h4>Requires Disclosure</h4><p>Companies must inform consumers when algorithmic pricing is in use and what categories of data drive price differences.</p></div>
+            <div class="provision"><h4>Ends Hidden Markup Schemes</h4><p>Mandates a transparent base price. Discounts must be clearly disclosed — not secretly calibrated to each person's breaking point.</p></div>
+          </div>
+          <div style="padding:1rem 1.25rem;border-left:2px solid var(--g);font-size:.85rem;color:var(--w2);line-height:1.7;background:var(--card);margin-bottom:1.25rem;">
+            <strong style="color:var(--w);display:block;margin-bottom:.3rem;">The Bottom Line</strong>
+            California courts already confirmed pricing people based on personal vulnerability is illegal. AB 2564 makes that protection universal, proactive, and enforceable.
+          </div>
+          <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;">Industry Arguments — and the Answers</p>
+          <div class="push-list">
+            <div class="push-row"><div class="push-q">"Dynamic pricing benefits consumers through discounts."</div><div class="push-arr">→</div><div class="push-a">These programs inflate the base price first, then calibrate discounts to each shopper's breaking point. Extraction with a coupon on top.</div></div>
+            <div class="push-row"><div class="push-q">"This is just supply and demand."</div><div class="push-arr">→</div><div class="push-a">Demand-based pricing responds to markets. Surveillance pricing responds to your personal data. Hiding discrimination behind algorithms is not a public good.</div></div>
+            <div class="push-row"><div class="push-q">"Consumers can shop around."</div><div class="push-arr">→</div><div class="push-a">Not when prices are invisible. FTC found intermediaries use data "down to mouse movements." Amazon holds 40%+ of U.S. e-commerce.</div></div>
+            <div class="push-row"><div class="push-q">"AB 2564 bans loyalty programs."</div><div class="push-arr">→</div><div class="push-a">False. AB 2564 targets covert profiling-based pricing only. Senior and student discounts are disclosed and universal.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENT 2: Research -->
+    <div class="tl-ev" data-ev="2">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot2"></div>
+        <div>
+          <div class="tl-ev-date">Weeks 4–6 — Deep Research</div>
+          <div class="tl-ev-title">Into the Evidence</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body2">
+        <p>Three weeks in FTC reports, NBER economic studies, Consumer Reports' Instacart investigation, and California court records. We map every argument industry lobbyists make and find the evidence that counters each one.</p>
+        <p style="margin-top:.5rem;">The Instacart finding hits hardest: 74% of items tested had multiple price points at the same store, same time. A family of four could pay up to $1,200 more per year without ever knowing why.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Research Phase</div>
+      </div>
+    </div>
+
+    <!-- EVENT 3: Writing with TechEquity -->
+    <div class="tl-ev" data-ev="3">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot3"></div>
+        <div>
+          <div class="tl-ev-date">Weeks 7–9 — Drafting</div>
+          <div class="tl-ev-title">Writing With TechEquity</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body3">
+        <p>Back-and-forth with Vinhcent and the team. Our first drafts are too long, too academic, too timid. Every sentence needs to either name the harm, cite the proof, or arm the reader. Nothing else earns its place.</p>
+        <p style="margin-top:.5rem;">We go through four full drafts. The rebuttal section turns out to be the most valuable piece.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Collaborative Drafting</div>
+
+        <!-- PANEL: What Did We Do / Why One-Pager -->
+        <div class="inline-panel" id="panel-why">
+          <p class="section-tag" style="margin-bottom:.75rem;">What Did We Do?</p>
+          <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">Why a <em>one-pager</em> works.</h3>
+          <p style="font-size:.88rem;color:var(--w2);line-height:1.75;margin-bottom:1rem;">Legislators and their staff manage dozens of bills at once. A well-crafted one-pager is often the only document that gets read cover-to-cover. Ours is designed to be fully understood in under two minutes.</p>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-bottom:1.5rem;">
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Plain-language definition of surveillance pricing</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Key stats: 23%, 86%, 250+ retailers — all sourced</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Three real cases with dollar amounts</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>What AB 2564 does — and what it does NOT ban</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Pre-loaded rebuttals to industry's 4 arguments</div>
+            <div style="padding:.75rem 1rem;font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>California court precedent confirming this is already illegal</div>
+          </div>
+          <div style="border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--card);padding:1.5rem;">
+            <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.6rem;">The One-Pager</p>
+            <p style="font-size:.85rem;color:var(--w2);line-height:1.65;margin-bottom:1rem;">Read or download the one-pager we produced with TechEquity Action — the document now in front of California legislators.</p>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+              <a href="YOUR_PDF_LINK_HERE" target="_blank" class="btn btn-g" style="font-size:.72rem;padding:.45rem 1.1rem;">Download PDF</a>
+              <a href="YOUR_GOOGLE_DOC_LINK_HERE" target="_blank" class="btn btn-o" style="font-size:.72rem;padding:.45rem 1.1rem;">View Google Doc</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENT 4: Review -->
+    <div class="tl-ev" data-ev="4">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot4"></div>
+        <div>
+          <div class="tl-ev-date">Week 10 — Final Review</div>
+          <div class="tl-ev-title">Sharpening Under Scrutiny</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body4">
+        <p>TechEquity's policy team stress-tests every claim. Could a lobbyist pick it apart? We tighten every stat, double-check every source, make sure every sentence would survive a committee hearing.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Policy Review</div>
+      </div>
+    </div>
+
+    <!-- EVENT 5: Delivery -->
+    <div class="tl-ev" data-ev="5">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot5"></div>
+        <div>
+          <div class="tl-ev-date">Week 12 — Delivery</div>
+          <div class="tl-ev-title">The One-Pager Reaches the Capitol</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body5">
+        <p>TechEquity Action delivers the one-pager to legislative staff and committee members during the AB 2564 hearings. Consumer Reports co-sponsors and submits formal testimony to the California Assembly Privacy Committee.</p>
+        <p style="margin-top:.5rem;">A document that started in a classroom is now in a briefing binder on a legislator's desk in Sacramento.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">California State Capitol, Sacramento</div>
+      </div>
+    </div>
+
+    <!-- EVENT 6: Now -->
+    <div class="tl-ev" data-ev="6">
+      <div class="tl-ev-head">
+        <div class="tl-ev-dot" id="dot6"></div>
+        <div>
+          <div class="tl-ev-date">Now</div>
+          <div class="tl-ev-title">Taking It Further</div>
+        </div>
+      </div>
+      <div class="tl-ev-body" id="body6">
+        <p>The bill is moving. We built this site to go wider — to explain surveillance pricing to anyone who shops online, and to make it as easy as possible to contact a legislator and say: vote YES on AB 2564.</p>
+        <p style="margin-top:.5rem;">Most people don't know this is happening to them. That's the problem we're solving now.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">You Are Here</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <p class="section-tag" style="justify-content:center;">Take Action</p>
+    <h2>Support<br><em>AB 2564.</em></h2>
+    <p>Most people don't know surveillance pricing is happening to them right now. You do. Here's what you can do about it.</p>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2564" target="_blank" class="btn btn-g">Read the Bill</a>
+      <a href="https://findyourrep.legislature.ca.gov/" target="_blank" class="btn btn-o">Find Your Rep</a>
+      <a href="https://www.techequityaction.org/" target="_blank" class="btn btn-o">TechEquity Action</a>
+    </div>
+    <div class="cta-steps">
+      <div class="cta-step"><div class="cta-n">01</div><p><strong>Contact your state legislator</strong> — tell them to vote YES on AB 2564. Find your rep at <a href="https://findyourrep.legislature.ca.gov/" target="_blank" style="color:var(--g);">findyourrep.legislature.ca.gov</a></p></div>
+      <div class="cta-step"><div class="cta-n">02</div><p><strong>Share the one-pager</strong> — distribute it in your networks, community organizations, and local events</p></div>
+      <div class="cta-step"><div class="cta-n">03</div><p><strong>Spread the word</strong> — most people don't know this is happening to them. Now you do.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── SCROLL REVEALS ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .stagger').forEach(el => ro.observe(el));
+
+// ── TIMELINE: single-column scroll-expand ──
+const tlEvs = document.querySelectorAll('.tl-ev');
+
+// Map: which inline-panel ID opens at which event index
+const panelMap = {
+  0: 'panel-what',   // Assignment Lands → What is surveillance pricing
+  1: 'panel-te',     // Meeting Vinhcent → TechEquity + AB 2564
+  3: 'panel-why',    // Writing with TechEquity → Why one-pager
+};
+
+// vertical line
+const tlLine = document.createElement('div');
+tlLine.id = 'tl-vline';
+document.getElementById('tlSingle').prepend(tlLine);
+
+function updateTL() {
+  const viewH = window.innerHeight;
+  let lastActive = -1;
+
+  tlEvs.forEach((ev, i) => {
+    const rect = ev.querySelector('.tl-ev-head').getBoundingClientRect();
+    const isActive = rect.top < viewH * 0.52;
+    if (isActive) {
+      ev.classList.add('ev-active');
+      lastActive = i;
+    } else {
+      ev.classList.remove('ev-active');
+    }
+
+    // expand body
+    const body = ev.querySelector('.tl-ev-body');
+    if (isActive) {
+      body.style.maxHeight = body.scrollHeight + 2000 + 'px'; // large for nested panels
+      body.style.opacity = '1';
+    } else {
+      body.style.maxHeight = '0';
+      body.style.opacity = '0';
+    }
+  });
+
+  // show inline panels when their trigger event is active
+  Object.entries(panelMap).forEach(([evIdx, panelId]) => {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    if (lastActive >= parseInt(evIdx)) {
+      panel.classList.add('panel-open');
+    } else {
+      panel.classList.remove('panel-open');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateTL, { passive: true });
+window.addEventListener('resize', updateTL);
+updateTL();
+
+// ── WORD ROTATOR ──
+const rotWords = [
+  "Your Data",
+  "Your Privacy",
+  "Your Location",
+  "Your Family",
+  "Your Kids",
+  "Your Income",
+  "Your History",
+  "Your Device",
+  "Your Habits",
+  "Your Fears",
+  "Surveillance",
+];
+let rotIdx = 0;
+const rotEl = document.getElementById('rotator');
+
+function rotateWord() {
+  rotIdx = (rotIdx + 1) % rotWords.length;
+
+  // Step 1: slide out up + fade
+  rotEl.classList.remove('rot-settle');
+  rotEl.classList.add('rot-exit');
+
+  setTimeout(() => {
+    // Step 2: snap new word in place below (invisible)
+    rotEl.textContent = rotWords[rotIdx];
+    rotEl.classList.remove('rot-exit');
+    rotEl.classList.add('rot-enter');
+
+    // Step 3: force reflow then settle into place smoothly
+    void rotEl.offsetHeight;
+    rotEl.classList.remove('rot-enter');
+    rotEl.classList.add('rot-settle');
+  }, 220);
+}
+
+// initialise settled state
+rotEl.classList.add('rot-settle');
+setInterval(rotateWord, 2200);
+
+// ── TICKER CLONE (seamless loop) ──
+const ticker = document.getElementById('ticker');
+ticker.innerHTML += ticker.innerHTML;
+</script>
+</body>
+</html>
