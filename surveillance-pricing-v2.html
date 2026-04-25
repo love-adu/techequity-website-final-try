@@ -37,12 +37,12 @@ body{
   overflow-x:hidden;
 }
 
-/* custom scrollbar */
+/*  scrollbar */
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--ink);}
 ::-webkit-scrollbar-thumb{background:var(--g2);}
 
-/* ── NAV ── */
+/*  NAV  */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:flex-end;
@@ -69,7 +69,7 @@ nav{
 }
 .nav-pill:hover{background:var(--g);color:var(--ink);}
 
-/* ── HERO ── */
+/*  HERO  */
 .hero{
   min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
   padding:52px 3rem 5rem;
@@ -542,9 +542,8 @@ footer a:hover{color:var(--g);}
     </h1>
     <div class="hero-body">
       <div>
-        <p class="hero-desc">AI is charging you more than your neighbor for the same product — based on your location, browsing history, and inferred income. No disclosure. No recourse. California's AB 2564 would end it.</p>
+        <p class="hero-desc">AI is charging you more than your neighbor for the same product — based on your data. California's AB 2564 would end this.</p>
         <div class="hero-ctas">
-          <a href="#cta" class="btn btn-g">Take Action</a>
           <a href="#timeline" class="btn btn-o">Scroll to Learn More</a>
         </div>
       </div>
@@ -569,73 +568,57 @@ footer a:hover{color:var(--g);}
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker" id="ticker">
-    <span class="ticker-item"><span>▸</span>INSTACART CHARGED FAMILIES 23% MORE FOR IDENTICAL ITEMS</span>
-    <span class="ticker-item"><span>▸</span>AMAZON CHARGED SCHOOL DISTRICTS 2–3× THE GOING RATE</span>
-    <span class="ticker-item"><span>▸</span>TARGET PAID $5M TO SETTLE CALIFORNIA LOCATION-BASED PRICING SUIT</span>
-    <span class="ticker-item"><span>▸</span>250+ RETAILERS NOW USING AI PRICING TOOLS — FTC 2025</span>
-    <span class="ticker-item"><span>▸</span>AB 2564 CO-SPONSORED BY TECHEQUITY ACTION AND CONSUMER REPORTS</span>
-    <span class="ticker-item"><span>▸</span>INSTACART CHARGED FAMILIES 23% MORE FOR IDENTICAL ITEMS</span>
-    <span class="ticker-item"><span>▸</span>AMAZON CHARGED SCHOOL DISTRICTS 2–3× THE GOING RATE</span>
-    <span class="ticker-item"><span>▸</span>TARGET PAID $5M TO SETTLE CALIFORNIA LOCATION-BASED PRICING SUIT</span>
-    <span class="ticker-item"><span>▸</span>250+ RETAILERS NOW USING AI PRICING TOOLS — FTC 2025</span>
-    <span class="ticker-item"><span>▸</span>AB 2564 CO-SPONSORED BY TECHEQUITY ACTION AND CONSUMER REPORTS</span>
-  </div>
-</div>
-
 <!-- WHO WE ARE (top) -->
 <section id="who" style="padding:5rem 3rem 3rem;border-bottom:1px solid var(--rule);">
   <div style="max-width:780px;margin:0 auto;text-align:center;">
     <p class="section-tag" style="justify-content:center;">Who We Are</p>
     <div style="display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
       <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
-        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">💩</div>
         <div style="color:var(--w);font-size:.95rem;font-weight:500;">Love Adu</div>
       </div>
       <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
-        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">😁</div>
         <div style="color:var(--w);font-size:.95rem;font-weight:500;">Ethan Ngo</div>
       </div>
       <div class="team-card" style="align-items:center;text-align:center;flex:0 1 160px;display:flex;flex-direction:column;gap:.75rem;padding:1.5rem 1.25rem;">
-        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">👤</div>
+        <div class="team-avatar" style="margin:0 auto;width:64px;height:64px;font-size:1.6rem;">😎</div>
         <div style="color:var(--w);font-size:.95rem;font-weight:500;">David McGrane</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TIMELINE — single column, panels expand inline -->
+<!-- TIMELINE -->
 <section id="timeline" style="padding:5rem 3rem 8rem;">
   <div class="tl-single" id="tlSingle">
 
-    <!-- EVENT 0: Assignment Lands -->
+    <!-- EVENT 0: Assignment Reaches Us -->
     <div class="tl-ev" data-ev="0">
       <div class="tl-ev-head">
         <div class="tl-ev-dot" id="dot0"></div>
         <div>
-          <div class="tl-ev-date">Week 1 — First Day of Class</div>
-          <div class="tl-ev-title">The Assignment Lands</div>
+          <div class="tl-ev-date">Week 3 of Class</div>
+          <div class="tl-ev-title">The Assignment Reaches Us</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body0">
-        <p>We're handed the brief: partner with a real advocacy organization, produce something that would actually be used. No dry research papers.</p>
-        <p>Most of us had never heard of surveillance pricing. By the end of that first week, we couldn't stop noticing it everywhere.</p>
+        <p>We're handed the assignment as ACES participants: partner with a tech advocacy organization, produce something that would actually be used.</p>
+        <p>Most of us in our group had never heard of surveillance pricing.</p>
         <div class="tl-tag" style="margin-top:.75rem;">Fall Semester Begins</div>
 
         <!-- PANEL: What is Surveillance Pricing -->
         <div class="inline-panel" id="panel-what">
           <p class="section-tag" style="margin-bottom:.75rem;">The Problem</p>
           <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">What is <em style="color:var(--red);">surveillance pricing?</em></h3>
-          <div class="def-block" style="font-size:1rem;margin-bottom:1rem;">AI that charges each customer a different price for the same product — based on your personal data, not market conditions.</div>
-          <p style="color:var(--w2);font-size:.85rem;line-height:1.75;margin-bottom:1.25rem;">Companies tag shoppers — <em>"impulsive buyer," "recently divorced," "first-time car buyer"</em> — and let algorithms set prices millions of times per day with no disclosure.</p>
+          <div class="def-block" style="font-size:1rem;margin-bottom:1rem;">AI that charges each customer a different price for the same product — based on your personal data.</div>
+          <p style="color:var(--w2);font-size:.85rem;line-height:1.75;margin-bottom:1.25rem;">Companies tag shoppers <em>"impulsive buyer," "recently divorced," "first-time car buyer"</em> and let algorithms set prices millions of times per day with no disclosure.</p>
           <table class="data-table" style="margin-bottom:1.25rem;">
             <tr><td>Location</td><td>How close you are to the store</td></tr>
             <tr><td>Browsing History</td><td>What you've been researching online</td></tr>
-            <tr><td>Device Type</td><td>iPhone vs. cheap Android = different price</td></tr>
-            <tr><td>Inferred Income</td><td>Estimated from neighborhood data</td></tr>
-            <tr><td>Behavior Tags</td><td>"Impulsive buyer," "recently divorced"</td></tr>
+            <tr><td>Device Type</td><td>iPhone vs. cheaper Android = different price</td></tr>
+            <tr><td>Inferred Income</td><td>Estimated from neighborhood/location data</td></tr>
+            <tr><td>Behavior Tags</td><td>"Impulsive buyer," "recently divorced", "new parent" </td></tr>
             <tr><td>Purchase History</td><td>What you've paid before &amp; your patterns</td></tr>
           </table>
           <div class="compare">
@@ -643,21 +626,21 @@ footer a:hover{color:var(--g);}
               <div class="compare-head">Normal Dynamic Pricing</div>
               <div class="citem"><span class="ci-ok">✓</span>Adjusts for supply &amp; demand</div>
               <div class="citem"><span class="ci-ok">✓</span>Responds to market conditions</div>
-              <div class="citem"><span class="ci-ok">✓</span>Same price for all shoppers</div>
-              <div class="citem"><span class="ci-ok">✓</span>Price changes are visible</div>
+              <div class="citem"><span class="ci-ok">✓</span>Same adjusted price for all shoppers</div>
+              <div class="citem"><span class="ci-ok">✓</span>Isn't based on personal data</div>
             </div>
             <div class="compare-side bad">
               <div class="compare-head">Surveillance Pricing</div>
               <div class="citem"><span class="ci-bad">✗</span>Uses your location, device, browsing history</div>
               <div class="citem"><span class="ci-bad">✗</span>Responds to your personal data</div>
               <div class="citem"><span class="ci-bad">✗</span>Different price for every shopper</div>
-              <div class="citem"><span class="ci-bad">✗</span>Invisible to the consumer</div>
+              <div class="citem"><span class="ci-bad">✗</span>Invisible/unknown to the consumer</div>
             </div>
           </div>
           <div class="cases" style="margin-top:1.25rem;">
             <div class="case"><div class="case-co">🛒 Instacart</div><div class="case-stat">Up to $1,200 extra per family of 4 annually</div><div class="case-body">Consumer Reports 2025: Eversight algorithm charged up to 23% more for identical items. 74% of items tested had multiple price points at the same store, same time.</div></div>
-            <div class="case"><div class="case-co">📦 Amazon</div><div class="case-stat">School districts charged 2–3× more per student</div><div class="case-body">Same-day, same-product price discrimination. One district could have saved $1M but received the Surveillance Price instead.</div></div>
-            <div class="case"><div class="case-co">🎯 Target</div><div class="case-stat">$5 million settlement in California</div><div class="case-body">Charged higher prices to California app users based on proximity — same product, different price.</div></div>
+            <div class="case"><div class="case-co">📦 Amazon</div><div class="case-stat">School districts charged 2–3× more per student</div>
+            <div class="case"><div class="case-co">🎯 Target</div><div class="case-stat">$5 million settlement in California</div><div class="case-body">Charged higher prices to California app users based on proximity.</div></div>
           </div>
         </div>
       </div>
@@ -668,22 +651,22 @@ footer a:hover{color:var(--g);}
       <div class="tl-ev-head">
         <div class="tl-ev-dot" id="dot1"></div>
         <div>
-          <div class="tl-ev-date">Week 3 — First Meeting</div>
+          <div class="tl-ev-date">Week 4, Our First Meeting</div>
           <div class="tl-ev-title">Meeting Vinhcent &amp; TechEquity</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body1">
-        <p>We meet Vinhcent Le — VP of AI Policy at TechEquity and former board member of the California Privacy Protection Agency. He lays out the landscape: 250+ retailers using these tools, multi-million dollar settlements already on the books, and a new bill — AB 2564 — working its way through the legislature.</p>
+        <p>We meet Vinhcent Le, VP of AI Policy at TechEquity and former board member of the California Privacy Protection Agency. He lays out the landscape: 250+ retailers using these tools, multi-million dollar settlements already on the books, and a new bill — AB 2564 — working its way through the legislature.</p>
         <p style="margin-top:.5rem;">"What we need is something a staffer can read in two minutes during a busy hearing week."</p>
-        <div class="tl-tag" style="margin-top:.75rem;">TechEquity Collaborative, Oakland</div>
+        <div class="tl-tag" style="margin-top:.75rem;">TechEquity Collaborative, Berkeley/Remote </div>
 
         <!-- PANEL: TechEquity + AB 2564 -->
         <div class="inline-panel" id="panel-te">
           <p class="section-tag" style="margin-bottom:.75rem;">Our Partner</p>
           <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">About <em>TechEquity.</em></h3>
           <div class="te-quote" style="font-size:1rem;margin-bottom:.5rem;">"Surveillance isn't just creepy — it's expensive. We cannot allow technology to become a weapon against the economic wellbeing of everyday Californians."</div>
-          <div class="te-attr" style="margin-bottom:1.25rem;">— Vinhcent Le, VP of AI Policy, TechEquity</div>
-          <p style="font-size:.85rem;color:var(--w2);line-height:1.75;margin-bottom:1.25rem;">TechEquity Action is the advocacy arm of the TechEquity Collaborative — a California-based organization working at the intersection of technology, housing, labor, and consumer rights. Co-sponsor of AB 2564 alongside Consumer Reports.</p>
+          <div class="te-attr" style="margin-bottom:1.25rem;">— Samantha Gordon, Chief Advocacy Officer, TechEquity Action.</div>
+          <p style="font-size:.85rem;color:var(--w2);line-height:1.75;margin-bottom:1.25rem;">TechEquity Action is the advocacy arm of the TechEquity Collaborative, the California-based organization working at the intersection of technology, housing, labor, and consumer rights. Co-sponsor of AB 2564 alongside Consumer Reports.</p>
           <div class="person" style="margin-bottom:1.25rem;">
             <div class="person-img" style="display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:600;background:var(--card);border:1px solid var(--rule);border-radius:4px;color:var(--g);">VL</div>
             <div>
@@ -693,9 +676,9 @@ footer a:hover{color:var(--g);}
             </div>
           </div>
           <div class="te-facts" style="margin-bottom:1.5rem;">
-            <div class="te-fact"><strong>Founded</strong><p>2016 in Oakland, California. Backed by Chan Zuckerberg Initiative, MacArthur Foundation, Ford Foundation.</p></div>
-            <div class="te-fact"><strong>Mission</strong><p>Ensure the tech industry is a force for justice — working at the intersection of technology, housing, labor, and consumer rights.</p></div>
-            <div class="te-fact"><strong>On AB 2564</strong><p>Co-sponsor alongside Consumer Reports. Submitted formal testimony to the California Assembly Privacy Committee.</p></div>
+            <div class="te-fact"><strong>Founded</strong><p>In 2016 in Oakland, California.</p></div>
+            <div class="te-fact"><strong>Mission</strong><p>Ensures the tech industry is a force for justice by working at the intersection of technology, housing, and labor for consumer rights.</p></div>
+            <div class="te-fact"><strong>On AB 2564</strong><p>Co-sponsor alongside Consumer Reports. Submitted testimony to the California Assembly Privacy Committee and is currently lobbying for it.</p></div>
           </div>
 
           <h3 style="font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:.75rem;"><em>AB 2564</em> — what it does.</h3>
@@ -703,18 +686,18 @@ footer a:hover{color:var(--g);}
           <div class="provision-list" style="margin-bottom:1.25rem;">
             <div class="provision"><h4>Bans Willingness-to-Pay Pricing</h4><p>Prohibits using personal behavioral and financial data to set individualized prices for identical goods.</p></div>
             <div class="provision"><h4>Requires Disclosure</h4><p>Companies must inform consumers when algorithmic pricing is in use and what categories of data drive price differences.</p></div>
-            <div class="provision"><h4>Ends Hidden Markup Schemes</h4><p>Mandates a transparent base price. Discounts must be clearly disclosed — not secretly calibrated to each person's breaking point.</p></div>
+            <div class="provision"><h4>Ends Hidden Markup Schemes</h4><p>Mandates a transparent base price. Discounts must be clearly disclosed and not secretly calibrated to each person's breaking point.</p></div>
           </div>
           <div style="padding:1rem 1.25rem;border-left:2px solid var(--g);font-size:.85rem;color:var(--w2);line-height:1.7;background:var(--card);margin-bottom:1.25rem;">
             <strong style="color:var(--w);display:block;margin-bottom:.3rem;">The Bottom Line</strong>
-            California courts already confirmed pricing people based on personal vulnerability is illegal. AB 2564 makes that protection universal, proactive, and enforceable.
+            California courts already confirmed pricing people based on personal vulnerability is illegal. AB 2564 makes that protection universal, proactive, and enforceable-- not just after the fact.
           </div>
-          <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;">Industry Arguments — and the Answers</p>
+          <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;">Industry Arguments (and the Answers)</p>
           <div class="push-list">
-            <div class="push-row"><div class="push-q">"Dynamic pricing benefits consumers through discounts."</div><div class="push-arr">→</div><div class="push-a">These programs inflate the base price first, then calibrate discounts to each shopper's breaking point. Extraction with a coupon on top.</div></div>
-            <div class="push-row"><div class="push-q">"This is just supply and demand."</div><div class="push-arr">→</div><div class="push-a">Demand-based pricing responds to markets. Surveillance pricing responds to your personal data. Hiding discrimination behind algorithms is not a public good.</div></div>
-            <div class="push-row"><div class="push-q">"Consumers can shop around."</div><div class="push-arr">→</div><div class="push-a">Not when prices are invisible. FTC found intermediaries use data "down to mouse movements." Amazon holds 40%+ of U.S. e-commerce.</div></div>
-            <div class="push-row"><div class="push-q">"AB 2564 bans loyalty programs."</div><div class="push-arr">→</div><div class="push-a">False. AB 2564 targets covert profiling-based pricing only. Senior and student discounts are disclosed and universal.</div></div>
+            <div class="push-row"><div class="push-q">"Dynamic pricing benefits consumers through discounts."</div><div class="push-arr">→</div><div class="push-a">These programs inflate the base price first, then calibrate discounts to each shopper's breaking point.</div></div>
+            <div class="push-row"><div class="push-q">"This is just supply and demand."</div><div class="push-arr">→</div><div class="push-a">Demand-based pricing responds to markets. Surveillance pricing, on the other hand, responds to your personal data. Hiding discrimination behind algorithms is not a public good.</div></div>
+            <div class="push-row"><div class="push-q">"Consumers can shop around."</div><div class="push-arr">→</div><div class="push-a">Not when price changes are invisible. FTC found intermediaries use data "down to mouse movements." Amazon holds 40%+ of U.S. e-commerce.</div></div>
+            <div class="push-row"><div class="push-q">"AB 2564 bans loyalty programs."</div><div class="push-arr">→</div><div class="push-a">Wrong!! AB 2564 targets covert profiling-based pricing only. Senior and student discounts are disclosed and universal.</div></div>
           </div>
         </div>
       </div>
@@ -725,13 +708,12 @@ footer a:hover{color:var(--g);}
       <div class="tl-ev-head">
         <div class="tl-ev-dot" id="dot2"></div>
         <div>
-          <div class="tl-ev-date">Weeks 4–6 — Deep Research</div>
-          <div class="tl-ev-title">Into the Evidence</div>
+          <div class="tl-ev-date">Weeks 4–6, the Deep Research</div>
+          <div class="tl-ev-title">Into the Research</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body2">
-        <p>Three weeks in FTC reports, NBER economic studies, Consumer Reports' Instacart investigation, and California court records. We map every argument industry lobbyists make and find the evidence that counters each one.</p>
-        <p style="margin-top:.5rem;">The Instacart finding hits hardest: 74% of items tested had multiple price points at the same store, same time. A family of four could pay up to $1,200 more per year without ever knowing why.</p>
+        <p>Three weeks into the FTC reports, NBER studies, Consumer Reports' Instacart investigation, and California court records, we begin to map every argument industry lobbyists make and find the evidence that counters each one.</p>
         <div class="tl-tag" style="margin-top:.75rem;">Research Phase</div>
       </div>
     </div>
@@ -741,34 +723,32 @@ footer a:hover{color:var(--g);}
       <div class="tl-ev-head">
         <div class="tl-ev-dot" id="dot3"></div>
         <div>
-          <div class="tl-ev-date">Weeks 7–9 — Drafting</div>
+          <div class="tl-ev-date">Weeks 7–9, Drafting</div>
           <div class="tl-ev-title">Writing With TechEquity</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body3">
-        <p>Back-and-forth with Vinhcent and the team. Our first drafts are too long, too academic, too timid. Every sentence needs to either name the harm, cite the proof, or arm the reader. Nothing else earns its place.</p>
-        <p style="margin-top:.5rem;">We go through four full drafts. The rebuttal section turns out to be the most valuable piece.</p>
-        <div class="tl-tag" style="margin-top:.75rem;">Collaborative Drafting</div>
+        <p>We have some back-and-forth with Vinhcent and the team. Our first drafts are too long and too academic for their taste. We start to ask who the audience for this product is.</p>
+        <p style="margin-top:.5rem;">We go through 2 full drafts before we pivot.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Drafting</div>
 
         <!-- PANEL: What Did We Do / Why One-Pager -->
         <div class="inline-panel" id="panel-why">
           <p class="section-tag" style="margin-bottom:.75rem;">What Did We Do?</p>
           <h3 style="font-family:'Instrument Serif',serif;font-size:1.6rem;line-height:1.1;margin-bottom:1rem;">Why a <em>one-pager</em> works.</h3>
-          <p style="font-size:.88rem;color:var(--w2);line-height:1.75;margin-bottom:1rem;">Legislators and their staff manage dozens of bills at once. A well-crafted one-pager is often the only document that gets read cover-to-cover. Ours is designed to be fully understood in under two minutes.</p>
+          <p style="font-size:.88rem;color:var(--w2);line-height:1.75;margin-bottom:1rem;">Legislators and their staff manage dozens of bills at once and are too busy to look at anything for more than a few minutes. A well-crafted one-pager is often the only document that gets read cover-to-cover. Ours is designed to be fully understood in under two minutes.</p>
           <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-bottom:1.5rem;">
             <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Plain-language definition of surveillance pricing</div>
-            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Key stats: 23%, 86%, 250+ retailers — all sourced</div>
-            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Three real cases with dollar amounts</div>
-            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>What AB 2564 does — and what it does NOT ban</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Key stats are ehanhced in size and bolded</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Three real court cases with dollar amounts</div>
+            <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>What AB 2564 does and what it does NOT ban</div>
             <div style="padding:.75rem 1rem;border-bottom:1px solid var(--rule);font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>Pre-loaded rebuttals to industry's 4 arguments</div>
-            <div style="padding:.75rem 1rem;font-size:.83rem;display:flex;gap:.6rem;"><span style="color:var(--g);">—</span>California court precedent confirming this is already illegal</div>
           </div>
           <div style="border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--card);padding:1.5rem;">
             <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.6rem;">The One-Pager</p>
-            <p style="font-size:.85rem;color:var(--w2);line-height:1.65;margin-bottom:1rem;">Read or download the one-pager we produced with TechEquity Action — the document now in front of California legislators.</p>
+            <p style="font-size:.85rem;color:var(--w2);line-height:1.65;margin-bottom:1rem;">Read the one-pager we produced with TechEquity Action.</p>
             <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-              <a href="YOUR_PDF_LINK_HERE" target="_blank" class="btn btn-g" style="font-size:.72rem;padding:.45rem 1.1rem;">Download PDF</a>
-              <a href="YOUR_GOOGLE_DOC_LINK_HERE" target="_blank" class="btn btn-o" style="font-size:.72rem;padding:.45rem 1.1rem;">View Google Doc</a>
+              <a href="https://docs.google.com/document/d/1Jfdtkek0JqU2IhbIQYCZloCkZvCAGeBH94QmMAqjvMQ/edit?usp=sharing" target="_blank" class="btn btn-o" style="font-size:.72rem;padding:.45rem 1.1rem;">View Google Doc</a>
             </div>
           </div>
         </div>
@@ -780,13 +760,13 @@ footer a:hover{color:var(--g);}
       <div class="tl-ev-head">
         <div class="tl-ev-dot" id="dot4"></div>
         <div>
-          <div class="tl-ev-date">Week 10 — Final Review</div>
+          <div class="tl-ev-date">Week 10, Final Review</div>
           <div class="tl-ev-title">Sharpening Under Scrutiny</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body4">
-        <p>TechEquity's policy team stress-tests every claim. Could a lobbyist pick it apart? We tighten every stat, double-check every source, make sure every sentence would survive a committee hearing.</p>
-        <div class="tl-tag" style="margin-top:.75rem;">Policy Review</div>
+        <p>TechEquity's policy team is really busy-- it takes some time to hear back, but we get feedback and refine our final version.</p>
+        <div class="tl-tag" style="margin-top:.75rem;">Review</div>
       </div>
     </div>
 
@@ -796,12 +776,12 @@ footer a:hover{color:var(--g);}
         <div class="tl-ev-dot" id="dot5"></div>
         <div>
           <div class="tl-ev-date">Week 12 — Delivery</div>
-          <div class="tl-ev-title">The One-Pager Reaches the Capitol</div>
+          <div class="tl-ev-title">The One-Pager Reaches the Capitol?</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body5">
-        <p>TechEquity Action delivers the one-pager to legislative staff and committee members during the AB 2564 hearings. Consumer Reports co-sponsors and submits formal testimony to the California Assembly Privacy Committee.</p>
-        <p style="margin-top:.5rem;">A document that started in a classroom is now in a briefing binder on a legislator's desk in Sacramento.</p>
+        <p>Well, not yet. Soon, TechEquity Action will deliver the one-pager to legislative staff and committee members during the AB 2564 hearings.</p>
+        <p style="margin-top:.5rem;">A document that started in a Berkeley classroom will soon be in a briefing binder on a legislator's desk in Sacramento.</p>
         <div class="tl-tag" style="margin-top:.75rem;">California State Capitol, Sacramento</div>
       </div>
     </div>
@@ -812,12 +792,12 @@ footer a:hover{color:var(--g);}
         <div class="tl-ev-dot" id="dot6"></div>
         <div>
           <div class="tl-ev-date">Now</div>
-          <div class="tl-ev-title">Taking It Further</div>
+          <div class="tl-ev-title">Taking It Further??</div>
         </div>
       </div>
       <div class="tl-ev-body" id="body6">
-        <p>The bill is moving. We built this site to go wider — to explain surveillance pricing to anyone who shops online, and to make it as easy as possible to contact a legislator and say: vote YES on AB 2564.</p>
-        <p style="margin-top:.5rem;">Most people don't know this is happening to them. That's the problem we're solving now.</p>
+        <p>The movement around the bill is moving. We began this site, after completing the one-pager, to go wider — to explain surveillance pricing to anyone who shops online, and to make it as easy as possible to contact a legislator and say: vote YES on AB 2564.</p>
+        <p style="margin-top:.5rem;">Most people don't know this is happening to them. That's the problem we're trying to solving now!</p>
         <div class="tl-tag" style="margin-top:.75rem;">You Are Here</div>
       </div>
     </div>
@@ -910,7 +890,6 @@ updateTL();
 // ── WORD ROTATOR ──
 const rotWords = [
   "Your Data",
-  "Your Privacy",
   "Your Location",
   "Your Family",
   "Your Kids",
